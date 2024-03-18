@@ -14,7 +14,9 @@ int main()
     {
         string command;
         getline(cin, command);
-
+        
+        // string::npos == 쓰레기 값 
+        // find() 함수는 일치하는 값의 첫번째 인덱스를 반환
         if(command.find(" ") != string::npos)
         {
             // command 에서 공백 존재, 명령문이 'push X' 임
