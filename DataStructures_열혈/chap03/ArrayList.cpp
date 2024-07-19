@@ -17,7 +17,6 @@ void ArrayList::AddNode(int _data)
         temp[count] = _data;
         delete data;
         data = temp;
-        delete temp;
     }
     count++;
 }
@@ -49,10 +48,34 @@ void ArrayList::DeleteNodeData(int _data)
                 tempIndex++;
             }
         }
+        count -= deleteCount;
         delete data;
         data = temp;
-        delete temp;
-        
+    }
+}
+
+void ArrayList::DeleteIndex(int _index)
+{
+    if(IsEmpty())
+    {
+        cout << "리스트가 비어있어서 해당 작업을 진행할 수 없습니다. " << endl;
+        return;
+    }
+    else
+    {
+        int* temp = new int[count - 1];
+        int tempIndex = 0;
+        for(int i = 0; i < count; i++)
+        {
+            if(i != _index)
+            {
+                temp[tempIndex] = data[i];
+                tempIndex++;
+            }
+        }
+        delete data;
+        data = temp;
+        count--;
     }
 }
 
@@ -80,6 +103,16 @@ void ArrayList::PrintAll()
 int ArrayList::GetListSize()
 {
     return count;
+}
+
+int ArrayList::GetNodeData(int _index)
+{
+    if(_index >= 0 && _index < count)
+    {
+        return data[_index];
+    }
+    cout << "해당 인덱스 값은 존재하지 않습니다. " << endl;
+    return -1;
 }
 
 ArrayList::ArrayList()

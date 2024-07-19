@@ -9,14 +9,39 @@
 
 int main()
 {
+    //1
     ArrayList list;
-    for(int i = 0; i < 4; i++)
+    for(int i = 0; i < 9; i++)
     {
-        list.AddNode(i);
+        list.AddNode(i + 1);
     }
     list.PrintAll();
+
     cout << "========================" << endl;
-    list.DeleteNodeData(3);
+
+    //2
+    int sum;
+    for(int i = 0; i < list.count; i++)
+    {
+        sum += list.GetNodeData(i);
+    }
+        cout << sum << endl;
+
+    cout << "========================" << endl;
+
+    //3
+    for(int i = 0; i < list.count; i++)
+    {
+        if(list.GetNodeData(i) % 2 == 0)
+        {
+            list.DeleteIndex(i);
+        }
+        if(list.GetNodeData(i) % 3 == 0)
+        {
+            list.DeleteIndex(i);
+        }
+    }
+    //4
     list.PrintAll();
 
     return 0;
